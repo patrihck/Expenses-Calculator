@@ -1,11 +1,7 @@
 import React from "react";
 
 class Expense extends React.Component {
-    expenseName;
-    expenseAmount;
-    expenseCurrency;
-
-    render(props) {
+    render() {
         return (
             <div>
                 <h1>{this.props.expenseName}</h1>
