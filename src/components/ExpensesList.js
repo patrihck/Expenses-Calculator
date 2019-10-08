@@ -7,7 +7,8 @@ class ExpensesList extends React.Component {
         super();
         this.state = {
             expensesList: [],
-            newExpenseText: "dd"
+            newExpenseText: "Type some expense here",
+            hidden: false
         }
         this.addExpense = this.addExpense.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -15,17 +16,17 @@ class ExpensesList extends React.Component {
     
     render () {
         return (
-            <div className="container">
+            <div className="container" hidden={this.state.hidden}>
                 {
                     this.state.expensesList.map((currValue) => {
                     return <Expense expenseName={currValue.expenseName} key={currValue.key}></Expense>
                 })
                 }
-                <input defaultValue="Type some expense here" onChange={this.handleInputChange}></input>
+                <input className="expense-name-input" defaultValue="Type some expense here" onChange={this.handleInputChange}></input>
                 <button onClick={this.addExpense} className="btn btn-secondary">Add Expense</button>
             </div>
         )                    
-    }
+    } 
 
     addExpense() {
 

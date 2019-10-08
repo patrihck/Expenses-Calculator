@@ -16,16 +16,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-        {this.state.expensesGroups.map(currState => currState)}
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
+      <>
+        <header>
           <button onClick={this.addExpenseGroup} className="btn btn-primary">New expense group</button>
         </header>
-      </div>
+        {this.state.expensesGroups.map(currState => currState)}         
+      </>
     );
   }
 
