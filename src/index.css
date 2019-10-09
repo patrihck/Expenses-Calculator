@@ -19,13 +19,20 @@ code {
   height: 25vh;
   float: left;
   margin-left: 4%;
-  margin-top: 2%;
+  margin-top: 3%;  
+}
+
+.expense-group-grid-container {
+  height: 60%;
+  margin-left: 5%;
+  margin-right: 5%;  
 }
 
 .expense-name-input {
   border: 5px;
   border-style: groove;
   border-color: black;
+  margin-top: 8%;
 }
 
 .inline-container-list-row {
@@ -42,4 +49,5 @@ code {
 
 .add-expense-btn {
   margin: 2%;
+  margin-top: 8%;
 }

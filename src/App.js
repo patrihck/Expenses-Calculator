@@ -21,9 +21,7 @@ class App extends React.Component {
         <header>
           <button onClick={this.addExpenseGroup} className="btn btn-primary main-button">New expense group</button>
         </header>
-        <body>
           {this.state.expensesGroups.map(currState => currState)}
-        </body>
       </>
     );
   }
