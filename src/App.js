@@ -15,12 +15,15 @@ class App extends React.Component {
   }
 
   render() {
+    document.body.style.background = "#585858";
     return (
       <>
         <header>
-          <button onClick={this.addExpenseGroup} className="btn btn-primary">New expense group</button>
+          <button onClick={this.addExpenseGroup} className="btn btn-primary main-button">New expense group</button>
         </header>
-        {this.state.expensesGroups.map(currState => currState)}         
+        <body>
+          {this.state.expensesGroups.map(currState => currState)}
+        </body>
       </>
     );
   }

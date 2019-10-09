@@ -8,7 +8,7 @@ class ExpensesList extends React.Component {
         this.state = {
             expensesList: [],
             newExpenseText: "Type some expense here",
-            hidden: false
+            addExpenseButtonHidden: true
         }
         this.addExpense = this.addExpense.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -22,8 +22,8 @@ class ExpensesList extends React.Component {
                     return <Expense expenseName={currValue.expenseName} key={currValue.key}></Expense>
                 })
                 }
-                <input className="expense-name-input" defaultValue="Type some expense here" onChange={this.handleInputChange}></input>
-                <button onClick={this.addExpense} className="btn btn-secondary">Add Expense</button>
+                <input className="expense-name-input" placeholder="Type some expense here" onChange={this.handleInputChange}></input>
+                <button onClick={this.addExpense} hidden={this.state.addExpenseButtonHidden} className="btn btn-secondary add-expense-btn">Add Expense</button>
             </div>
         )                    
     } 
@@ -43,7 +43,8 @@ class ExpensesList extends React.Component {
 
     handleInputChange(e) {
         this.setState({
-            newExpenseText: e.target.value
+            newExpenseText: e.target.value,
+            addExpenseButtonHidden: false
         })
     }
 }

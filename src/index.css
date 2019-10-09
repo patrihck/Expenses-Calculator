@@ -18,7 +18,8 @@ code {
   width: 28vw;
   height: 25vh;
   float: left;
-  margin: 5px;
+  margin-left: 4%;
+  margin-top: 2%;
 }
 
 .expense-name-input {
@@ -31,4 +32,14 @@ code {
   display: -webkit-inline-box;
   font-size: 16px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  width: 100%;
+}
+
+.main-button {
+    position: relative;
+    left: 50%;
+}
+
+.add-expense-btn {
+  margin: 2%;
 }
