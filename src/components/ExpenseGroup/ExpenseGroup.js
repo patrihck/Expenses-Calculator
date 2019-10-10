@@ -1,5 +1,6 @@
 import React from "react";
-import ExpensesList from "./ExpensesList";
+import ExpensesList from "../ExpensesList";
+import './ExpenseGroup.css';
 
 class ExpenseGroup extends React.Component {
   constructor() {
@@ -18,10 +19,14 @@ class ExpenseGroup extends React.Component {
         onMouseLeave={this.handleMouseMovement}
         style={this.state.backgroundStyle}
       >
-        <h1>Expense Group Name</h1>
+        <input type="text" defaultValue="New expense group" onChange={this.handleExpenseGroupNameChanged} className="expense-group-name-input"></input>
         <ExpensesList className="expense-group-grid-container"></ExpensesList>
       </div>
     );
+  }
+
+  handleExpenseGroupNameChanged = () => {
+
   }
 
   handleMouseMovement() {

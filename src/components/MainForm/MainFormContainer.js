@@ -1,6 +1,5 @@
 import React from "react";
 import MainFormComponent from "./MainFormComponent";
-import ExpenseGroup from "./../ExpenseGroup";
 
 class MainFormContainer extends React.Component {
   constructor() {
@@ -13,13 +12,13 @@ class MainFormContainer extends React.Component {
 
   render() {
     return (
-      <MainFormComponent expensesFormHidden = {this.state.expensesFormHidden} onChange={this.handleSelectionChanged}></MainFormComponent>
+      <MainFormComponent expensesFormHidden={this.state.expensesFormHidden} onChange={this.handleSelectionChanged}></MainFormComponent>
     );
   }
 
   handleSelectionChanged(selectedView) {
-      this.setState(() => {
-        let newState = selectedView === "expenses" ?
+    this.setState(() => {
+      let newState = selectedView === "expenses" ?
         {
           expensesFormHidden: false
         }
@@ -28,12 +27,12 @@ class MainFormContainer extends React.Component {
           expensesFormHidden: true
         }
 
-        return newState;
-      });
-          
+      return newState;
+    });
+
   }
 
-  
+
 }
 
 export default MainFormContainer;

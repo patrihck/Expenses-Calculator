@@ -1,6 +1,7 @@
 import React from "react";
 import ExpensesFormComponent from "./ExpensesFormComponent";
-import ExpenseGroup from './../../ExpenseGroup';
+import ExpenseGroup from '../../ExpenseGroup/ExpenseGroup';
+
 class ExpensesForm extends React.Component {
 
     constructor() {
@@ -18,7 +19,7 @@ class ExpensesForm extends React.Component {
         )
     }
 
-    addExpenseGroup = () => {
+    addExpenseGroup() {
         this.setState(prevState => {
           let expensesGroups = prevState.expensesGroups;
           expensesGroups.push(

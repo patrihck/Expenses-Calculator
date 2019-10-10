@@ -11,36 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
- 
-.expense-group-container {
-  border: 10px solid orange;  
-  background-color: darkcyan;
-  width: 28vw;
-  height: 25vh;
-  float: left;
-  margin-left: 4%;
-  margin-top: 3%;  
-}
 
-.expense-group-grid-container {
-  height: 60%;
-  margin-left: 5%;
-  margin-right: 5%;  
-}
 
-.expense-name-input {
-  border: 5px;
-  border-style: groove;
-  border-color: black;
-  margin-top: 8%;
-}
-
-.inline-container-list-row {
-  display: -webkit-inline-box;
-  font-size: 16px;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  width: 100%;
-}
 
 .main-button {
     position: relative;

@@ -1,7 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import ExpenseGroup from './components/ExpenseGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainViewSelect from './components/MainViewSelect';
 import MainFormContainer from './components/MainForm/MainFormContainer';
