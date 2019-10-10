@@ -12,11 +12,10 @@ code {
     monospace;
 }
 
-
-
 .main-button {
-    position: relative;
-    left: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block !important;
 }
 
 .add-expense-btn {

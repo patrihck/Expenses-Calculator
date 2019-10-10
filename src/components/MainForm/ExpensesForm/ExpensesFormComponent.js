@@ -1,5 +1,5 @@
 import React from "react";
-import MainViewSelect from './../../MainViewSelect';
+import MainViewSelect from "./../../MainViewSelect";
 function ExpensesFormComponent(props) {
   return (
     <>
@@ -7,7 +7,7 @@ function ExpensesFormComponent(props) {
         <button
           // hidden={this.props.data.expensesGroupsView}
           onClick={props.addExpenseGroup}
-          className="btn btn-primary main-button"
+          className="main-button btn btn-primary"
         >
           New expense group
         </button>
