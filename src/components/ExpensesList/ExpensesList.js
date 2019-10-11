@@ -14,7 +14,9 @@ class ExpensesList extends React.Component {
             description: "Type some expense here",
             price: null,
             date: "",
+            expenseToDelete: null,
             addExpenseButtonHidden: true,
+            addOrDeleteExpense: "Add Expense",
             columnDefs: [
                 {headerName: 'Opis', field: 'description'},
                 {headerName: 'Kwota', field: 'price'},
@@ -28,7 +30,7 @@ class ExpensesList extends React.Component {
         return (
             <React.Fragment>
                 <div className="ag-theme-balham expense-group-grid-container">
-                    <AgGridReact className="expense-group-container"
+                    <AgGridReact className="expense-group-container" onRowClicked={this.handleOnRowClicked}
                         columnDefs={this.state.columnDefs}
                         rowData={this.state.expensesList}>
                     </AgGridReact>
@@ -37,7 +39,7 @@ class ExpensesList extends React.Component {
                 <input name="description" className="expense-name-input" placeholder="Description" onChange={this.handleInputChange}></input>
                 <input name="price" className="expense-name-input" placeholder="Price" onChange={this.handleInputChange}></input>
                 <input name="date" className="expense-name-input" placeholder="Date" onChange={this.handleInputChange}></input>
-                <button onClick={this.addExpense} hidden={this.state.addExpenseButtonHidden} className="btn btn-secondary add-expense-btn">Add Expense</button>
+                <button onClick={this.handleAddDeleteButtonClicked} hidden={this.state.addExpenseButtonHidden} value={this.state.addOrDeleteExpense} className="btn btn-secondary add-expense-btn">{this.state.addOrDeleteExpense}</button>
             </React.Fragment>
         )                    
     } 
@@ -52,9 +54,9 @@ class ExpensesList extends React.Component {
                         date: prevState.date                        
                     })
             let newState = {
-                expensesList: newExpensesList
+                expensesList: newExpensesList,
             }
-            console.log(newState.expensesList);
+
             return newState;
             }
         )        
@@ -64,7 +66,57 @@ class ExpensesList extends React.Component {
         const {name, value} = e.target;
         this.setState({
             [name]: value,
-            addExpenseButtonHidden: false
+            addExpenseButtonHidden: false,
+            addOrDeleteExpense: "Add Expense"
+        })
+    }
+
+    handleAddDeleteButtonClicked = (event) => {
+        let value = event.target.value;
+
+        if (value === "Add Expense") {
+            this.addExpense();
+        } else {
+            this.deleteExpense();
+        }
+    }
+
+    handleOnRowClicked = (event) => {
+        const {description, price, date} = event.data;
+        let addOrDeleteExpense = "DeleteExpense"
+        this.setState((prevState) => {
+            let newState = {
+            expenseToDelete: {
+                description: description,
+                price: price,
+                date: date
+            },
+            addOrDeleteExpense: addOrDeleteExpense
+        }
+
+        return newState;
+        })
+        
+    }
+
+    deleteExpense = () => {
+
+        if (this.state.expenseToDelete === null) return;
+        const {description, price, date} = this.state.expenseToDelete;
+
+        this.setState((prevState) => {
+            let newExpensesList = [...prevState.expensesList];
+            let indexToDelete = newExpensesList.findIndex((expense) =>
+                 expense.description == description
+             && expense.price === price
+             && expense.date === date)
+            newExpensesList.splice(indexToDelete, 1);
+            let newState = {
+                expensesList: newExpensesList,
+                expenseToDelete: null
+            }
+
+            return newState;
         })
     }
 }

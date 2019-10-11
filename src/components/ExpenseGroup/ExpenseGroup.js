@@ -35,7 +35,7 @@ class ExpenseGroup extends React.Component {
         previousState.backgroundStyle.backgroundColor == "green"
           ? {
               backgroundStyle: {
-                backgroundColor: "darkcyan"
+                backgroundColor: "black"
               }
             }
           : {

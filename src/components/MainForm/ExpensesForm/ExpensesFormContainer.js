@@ -29,7 +29,6 @@ class ExpensesForm extends React.Component {
               </ExpenseGroup>
             </div>
           );
-          console.log(expensesGroups);
     
           return expensesGroups;
         });
