@@ -1,5 +1,5 @@
 import React from "react";
-import ExpensesList from "../ExpensesList";
+import ExpensesList from "../ExpensesList/ExpensesList";
 import './ExpenseGroup.css';
 
 class ExpenseGroup extends React.Component {
@@ -32,7 +32,7 @@ class ExpenseGroup extends React.Component {
   handleMouseMovement() {
     this.setState(previousState => {
       let newState =
-        previousState.backgroundStyle.backgroundColor == "orange"
+        previousState.backgroundStyle.backgroundColor == "green"
           ? {
               backgroundStyle: {
                 backgroundColor: "darkcyan"
@@ -40,7 +40,7 @@ class ExpenseGroup extends React.Component {
             }
           : {
               backgroundStyle: {
-                backgroundColor: "orange"
+                backgroundColor: "green"
               }
             };
 

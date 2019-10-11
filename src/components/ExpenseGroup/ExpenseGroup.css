@@ -1,19 +1,26 @@
 .expense-name-input {
+    width: 20%;
     border: 5px;
     border-style: groove;
     border-color: black;
-    margin-top: 8%;
+    margin-top: 0.5%;
+    margin-left: 1%;
+    margin-right: auto;
+    height: 20%;
     background-color:brown;
     text-decoration-color: black;
   }
   
-  
+  .add-expense-btn {
+    width: 30%;
+    margin-left: 5%;
+  }
   .expense-group-container {
     border: 10px solid orange;  
     border-radius: 25px;
     background-color: darkcyan;
     width: 28vw;
-    height: 25vh;
+    height: 30vh;
     float: left;
     margin-left: 4%;
     margin-top: 3%;  

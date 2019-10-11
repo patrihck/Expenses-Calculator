@@ -1,8 +1,9 @@
 import React from "react";
-import Expense from './constants/Expense';
+import Expense from '../constants/Expense';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+import './ExpensesList.css';
 
 class ExpensesList extends React.Component {
 
