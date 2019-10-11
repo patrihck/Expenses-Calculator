@@ -17,7 +17,7 @@
     float: left;
     margin-left: 4%;
     margin-top: 3%;  
-    cursor: col-resize;
+    cursor: pointer;
   }
   
   .expense-group-grid-container {

@@ -10,20 +10,16 @@ class ExpensesList extends React.Component {
         super();
         this.state = {
             expensesList: [],
-            newExpenseText: "Type some expense here",
+            description: "Type some expense here",
+            price: null,
+            date: "",
             addExpenseButtonHidden: true,
             columnDefs: [
-                {headerName: 'Make', field: 'make'},
-                {headerName: 'Model', field: 'model'},
-                {headerName: 'Price', field: 'price'}
-            ],
-            rowData: [
-                {make: 'Toyota', model: 'Celica', price: 35000},
-                {make: 'Ford', model: 'Mondeo', price: 32000},
-                {make: 'Porsche', model: 'Boxter', price: 72000}
+                {headerName: 'Opis', field: 'description'},
+                {headerName: 'Kwota', field: 'price'},
+                {headerName: 'Data', field: 'date'}
             ]
         }
-        this.addExpense = this.addExpense.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
     }
     
@@ -33,32 +29,40 @@ class ExpensesList extends React.Component {
                 <div className="ag-theme-balham expense-group-grid-container">
                     <AgGridReact className="expense-group-container"
                         columnDefs={this.state.columnDefs}
-                        rowData={this.state.rowData}>
+                        rowData={this.state.expensesList}>
                     </AgGridReact>
                 </div>                                     
                 
-                <input className="expense-name-input" placeholder="Type some expense here" onChange={this.handleInputChange}></input>
+                <input name="description" className="expense-name-input" placeholder="Description" onChange={this.handleInputChange}></input>
+                <input name="price" className="expense-name-input" placeholder="Price" onChange={this.handleInputChange}></input>
+                <input name="date" className="expense-name-input" placeholder="Date" onChange={this.handleInputChange}></input>
                 <button onClick={this.addExpense} hidden={this.state.addExpenseButtonHidden} className="btn btn-secondary add-expense-btn">Add Expense</button>
             </React.Fragment>
         )                    
     } 
 
-    addExpense() {
-
+    addExpense = () => {
             this.setState((prevState) => {            
-            let newState = prevState.expensesList;
-            newState.push({
-                expenseName: prevState.newExpenseText,
-                key: this.state.expensesList.length
-            });
-            console.log(newState);
+                let newExpensesList = [...prevState.expensesList];
+                newExpensesList.push(
+                    {
+                        description: prevState.description,
+                        price: prevState.price,
+                        date: prevState.date                        
+                    })
+            let newState = {
+                expensesList: newExpensesList
+            }
+            console.log(newState.expensesList);
             return newState;
-        })        
+            }
+        )        
     }
 
     handleInputChange(e) {
+        const {name, value} = e.target;
         this.setState({
-            newExpenseText: e.target.value,
+            [name]: value,
             addExpenseButtonHidden: false
         })
     }
