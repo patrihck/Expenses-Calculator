@@ -5,15 +5,20 @@ class MainFormContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      expenseGrups: [],
+      expenseGroups: [],
       selectedView: null
-    }
+    };
     this.handleSelectionChanged = this.handleSelectionChanged.bind(this);
   }
 
   render() {
     return (
-      <MainFormComponent selectedView={this.state.selectedView} onChange={this.handleSelectionChanged} onExpenseGroupAdded = {this.handleExpenseGroupAdded}></MainFormComponent>
+      <MainFormComponent
+        selectedView={this.state.selectedView}
+        onChange={this.handleSelectionChanged}
+        onExpenseGroupAdded={this.handleExpenseGroupAdded}
+        expenseGroups={this.state.expenseGroups}
+      ></MainFormComponent>
     );
   }
 
@@ -22,12 +27,14 @@ class MainFormContainer extends React.Component {
       selectedView: selectedView
     });
   }
-  handleExpenseGroupAdded = (expenseGroups) => {
-    this.setState({
-      expenseGroups: expenseGroups
-    })
-  }
-
+  handleExpenseGroupAdded = expenseGroups => {
+    this.setState(prevState => {
+      let newState = {
+        expenseGroups: expenseGroups
+      };
+      return newState;
+    });
+  };
 }
 
 export default MainFormContainer;
