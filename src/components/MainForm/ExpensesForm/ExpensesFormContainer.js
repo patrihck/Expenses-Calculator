@@ -29,7 +29,7 @@ class ExpensesForm extends React.Component {
               </ExpenseGroup>
             </div>
           );
-    
+          this.props.onExpenseGroupAdded(expensesGroups);
           return expensesGroups;
         });
       };

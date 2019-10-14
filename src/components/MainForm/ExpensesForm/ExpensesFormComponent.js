@@ -5,7 +5,6 @@ function ExpensesFormComponent(props) {
     <>
       <header>
         <button
-          // hidden={this.props.data.expensesGroupsView}
           onClick={props.addExpenseGroup}
           className="main-button btn btn-primary"
         >

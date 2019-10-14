@@ -5,33 +5,28 @@ class MainFormContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      expensesFormHidden: true
+      expenseGrups: [],
+      selectedView: null
     }
     this.handleSelectionChanged = this.handleSelectionChanged.bind(this);
   }
 
   render() {
     return (
-      <MainFormComponent expensesFormHidden={this.state.expensesFormHidden} onChange={this.handleSelectionChanged}></MainFormComponent>
+      <MainFormComponent selectedView={this.state.selectedView} onChange={this.handleSelectionChanged} onExpenseGroupAdded = {this.handleExpenseGroupAdded}></MainFormComponent>
     );
   }
 
   handleSelectionChanged(selectedView) {
-    this.setState(() => {
-      let newState = selectedView === "expenses" ?
-        {
-          expensesFormHidden: false
-        }
-        :
-        {
-          expensesFormHidden: true
-        }
-
-      return newState;
+    this.setState({
+      selectedView: selectedView
     });
-
   }
-
+  handleExpenseGroupAdded = (expenseGroups) => {
+    this.setState({
+      expenseGroups: expenseGroups
+    })
+  }
 
 }
 

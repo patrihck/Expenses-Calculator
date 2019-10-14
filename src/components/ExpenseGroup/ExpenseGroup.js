@@ -6,6 +6,8 @@ class ExpenseGroup extends React.Component {
   constructor() {
     super();
     this.state = {
+      expenseGroupName: "New expense group",
+      expensesList: null,
       backgroundStyle: {
         backgroundColor: "black"
       }
@@ -21,14 +23,10 @@ class ExpenseGroup extends React.Component {
         onMouseLeave={this.handleMouseMovement}
         style={this.state.backgroundStyle}
       >
-        <input type="text" defaultValue="New expense group" onChange={this.handleExpenseGroupNameChanged} className="expense-group-name-input"></input>
-        <ExpensesList className="expense-group-grid-container"></ExpensesList>
+        <input type="text" value={this.state.expenseGroupName} className="expense-group-name-input"></input>
+        <ExpensesList expensesList = {this.props.expensesList} className="expense-group-grid-container"></ExpensesList>
       </div>
     );
-  }
-
-  handleExpenseGroupNameChanged = () => {
-
   }
 
   handleMouseMovement() {

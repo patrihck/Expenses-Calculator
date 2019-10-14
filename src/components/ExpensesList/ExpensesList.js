@@ -55,7 +55,7 @@ class ExpensesList extends React.Component {
             let newState = {
                 expensesList: newExpensesList,
             }
-
+            
             return newState;
             }
         )        
