@@ -15,7 +15,7 @@ class MainViewSelect extends React.Component {
             <div>
                 <select value={this.props.selectedView} onChange={this.handleSelectionChanged}>
                     <option >Choose a view</option>
-                    <option value="expenses">Expenses</option>
+                    <option value="expenses" >Expenses</option>
                     <option value="charts">Charts</option>
                     <option value="info">Info</option>
                 </select>

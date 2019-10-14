@@ -4,6 +4,7 @@ import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import './ExpensesList.css';
+import { stringLiteral } from "@babel/types";
 
 class ExpensesList extends React.Component {
 
@@ -11,8 +12,8 @@ class ExpensesList extends React.Component {
         super();
         this.state = {
             expensesList: [],
-            description: "Type some expense here",
-            price: null,
+            description: "",
+            price: "",
             date: "",
             expenseToDelete: null,
             addExpenseButtonHidden: true,
@@ -36,9 +37,9 @@ class ExpensesList extends React.Component {
                     </AgGridReact>
                 </div>                                     
                 
-                <input name="description" className="expense-name-input" placeholder="Description" onChange={this.handleInputChange}></input>
-                <input name="price" className="expense-name-input" placeholder="Price" onChange={this.handleInputChange}></input>
-                <input name="date" className="expense-name-input" placeholder="Date" onChange={this.handleInputChange}></input>
+                <input name="description" type="text" maxLength="15" className="expense-detail-input" placeholder="Description" onChange={this.handleInputChange}></input>
+                <input name="price" type="number" maxLength="4"className="expense-detail-input expense-price-input" placeholder="Price" onChange={this.handleInputChange}></input>
+                <input name="date" type="date" className="expense-detail-input expense-date-input" placeholder="Date" onChange={this.handleInputChange}></input>
                 <button onClick={this.handleAddDeleteButtonClicked} hidden={this.state.addExpenseButtonHidden} value={this.state.addOrDeleteExpense} className="btn btn-secondary add-expense-btn">{this.state.addOrDeleteExpense}</button>
             </React.Fragment>
         )                    
@@ -61,17 +62,26 @@ class ExpensesList extends React.Component {
             }
         )        
     }
-
     handleInputChange(e) {
         const {name, value} = e.target;
         this.setState({
             [name]: value,
-            addExpenseButtonHidden: false,
             addOrDeleteExpense: "Add Expense"
-        })
+        }, () => {
+            const hidden = this.checkFieldsEmpty();
+            this.setState({
+                addExpenseButtonHidden: hidden
+            })
+        })        
     }
 
-    handleAddDeleteButtonClicked = (event) => {
+    checkFieldsEmpty() {
+        return this.state.description === ""
+        || this.state.price === ""
+        || this.state.date === ""
+    }
+
+    handleAddDeleteButtonClicked = (event) => {       
         let value = event.target.value;
 
         if (value === "Add Expense") {
