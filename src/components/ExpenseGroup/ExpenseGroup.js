@@ -6,7 +6,9 @@ class ExpenseGroup extends React.Component {
   constructor() {
     super();
     this.state = {
-      backgroundStyle: {}
+      backgroundStyle: {
+        backgroundColor: "black"
+      }
     };
 
     this.handleMouseMovement = this.handleMouseMovement.bind(this);
@@ -32,15 +34,15 @@ class ExpenseGroup extends React.Component {
   handleMouseMovement() {
     this.setState(previousState => {
       let newState =
-        previousState.backgroundStyle.backgroundColor == "green"
+        previousState.backgroundStyle.backgroundColor == "black"
           ? {
               backgroundStyle: {
-                backgroundColor: "black"
+                backgroundColor: "rgb(179, 152, 103)"
               }
             }
           : {
               backgroundStyle: {
-                backgroundColor: "green"
+                backgroundColor: "black"
               }
             };
 

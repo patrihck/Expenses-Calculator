@@ -1,10 +1,8 @@
 import React from "react";
-import Expense from '../constants/Expense';
 import { AgGridReact } from 'ag-grid-react';
 import 'ag-grid-community/dist/styles/ag-grid.css';
 import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 import './ExpensesList.css';
-import { stringLiteral } from "@babel/types";
 
 class ExpensesList extends React.Component {
 
@@ -16,7 +14,7 @@ class ExpensesList extends React.Component {
             price: "",
             date: "",
             expenseToDelete: null,
-            addExpenseButtonHidden: true,
+            addExpenseButtonDisabled: true,
             addOrDeleteExpense: "Add Expense",
             columnDefs: [
                 {headerName: 'Opis', field: 'description'},
@@ -40,7 +38,7 @@ class ExpensesList extends React.Component {
                 <input name="description" type="text" maxLength="15" className="expense-detail-input" placeholder="Description" onChange={this.handleInputChange}></input>
                 <input name="price" type="number" maxLength="4"className="expense-detail-input expense-price-input" placeholder="Price" onChange={this.handleInputChange}></input>
                 <input name="date" type="date" className="expense-detail-input expense-date-input" placeholder="Date" onChange={this.handleInputChange}></input>
-                <button onClick={this.handleAddDeleteButtonClicked} hidden={this.state.addExpenseButtonHidden} value={this.state.addOrDeleteExpense} className="btn btn-secondary add-expense-btn">{this.state.addOrDeleteExpense}</button>
+                <button onClick={this.handleAddDeleteButtonClicked} disabled={this.state.addExpenseButtonDisabled} value={this.state.addOrDeleteExpense} className="btn btn-secondary add-expense-btn">{this.state.addOrDeleteExpense}</button>
             </React.Fragment>
         )                    
     } 
@@ -68,9 +66,9 @@ class ExpensesList extends React.Component {
             [name]: value,
             addOrDeleteExpense: "Add Expense"
         }, () => {
-            const hidden = this.checkFieldsEmpty();
+            const disabled = this.checkFieldsEmpty();
             this.setState({
-                addExpenseButtonHidden: hidden
+                addExpenseButtonDisabled: disabled
             })
         })        
     }
