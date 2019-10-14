@@ -93,7 +93,7 @@ class ExpensesList extends React.Component {
 
     handleOnRowClicked = (event) => {
         const {description, price, date} = event.data;
-        let addOrDeleteExpense = "DeleteExpense"
+        let addOrDeleteExpense = "Delete Expense"
         this.setState((prevState) => {
             let newState = {
             expenseToDelete: {
@@ -123,7 +123,8 @@ class ExpensesList extends React.Component {
             newExpensesList.splice(indexToDelete, 1);
             let newState = {
                 expensesList: newExpensesList,
-                expenseToDelete: null
+                expenseToDelete: null,
+                addOrDeleteExpense: "Add Expense"
             }
 
             return newState;
