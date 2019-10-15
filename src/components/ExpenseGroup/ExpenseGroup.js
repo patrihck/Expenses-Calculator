@@ -1,12 +1,12 @@
 import React from "react";
 import ExpensesList from "../ExpensesList/ExpensesList";
-import './ExpenseGroup.css';
+import "./ExpenseGroup.css";
 
 class ExpenseGroup extends React.Component {
   constructor() {
     super();
     this.state = {
-      expenseGroupName: "New expense group",
+      expenseGroupName: null,
       expensesList: null,
       backgroundStyle: {
         backgroundColor: "black"
@@ -23,8 +23,16 @@ class ExpenseGroup extends React.Component {
         onMouseLeave={this.handleMouseMovement}
         style={this.state.backgroundStyle}
       >
-        <input type="text" value={this.state.expenseGroupName} className="expense-group-name-input"></input>
-        <ExpensesList expensesList = {this.props.expensesList} className="expense-group-grid-container"></ExpensesList>
+        <input
+          type="text"
+          className="expense-group-name-input"
+          onChange={this.handleExpenseGroupNameChanged}
+        ></input>
+        <ExpensesList
+          expensesList={this.props.expensesList}
+          addExpense={this.props.addExpense}
+          className="expense-group-grid-container"
+        ></ExpensesList>
       </div>
     );
   }
@@ -47,6 +55,17 @@ class ExpenseGroup extends React.Component {
       return newState;
     });
   }
+
+  handleExpenseGroupNameChanged = event => {
+    this.setState({
+      expenseGroupName: event.target.value
+    });
+
+    this.props.handleExpenseGroupNameChanged(
+      this.props.expenseGroupId,
+      event.target.value
+    );
+  };
 }
 
 export default ExpenseGroup;

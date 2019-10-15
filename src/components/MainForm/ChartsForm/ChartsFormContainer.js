@@ -1,18 +1,25 @@
 import React from "react";
+import ChartsFormComponent from "./ChartsFormComponent";
 
 class ChartsFormContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      charts: []
+      chartsList: []
     };
   }
   render() {
     return (
       <div>
-        <h1>Yoooo</h1>
+        <ChartsFormComponent chartsList = {this.loadChartsList()}></ChartsFormComponent>
       </div>
     );
+  }
+
+  loadChartsList = () => {
+    const expenseGroups = this.props.expenseGroups;
+    
+    console.log(expenseGroups);
   }
 }
 

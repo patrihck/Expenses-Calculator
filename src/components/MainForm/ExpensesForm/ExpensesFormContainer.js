@@ -1,38 +1,53 @@
 import React from "react";
 import ExpensesFormComponent from "./ExpensesFormComponent";
-import ExpenseGroup from '../../ExpenseGroup/ExpenseGroup';
+import ExpenseGroup from "../../ExpenseGroup/ExpenseGroup";
 
 class ExpensesForm extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      expensesGroups: [],
+      expensesGroupsView: true
+    };
+    this.addExpenseGroup = this.addExpenseGroup.bind(this);
+  }
 
-    constructor() {
-        super();
-      this.state = {
-        expensesGroups: [],
-        expensesGroupsView: true
-      };
-      this.addExpenseGroup = this.addExpenseGroup.bind(this);
-    }
+  render() {
+    return (
+      <ExpensesFormComponent
+        addExpenseGroup={this.addExpenseGroup}
+        data={this.state}
+      ></ExpensesFormComponent>
+    );
+  }
 
-    render() {
-        return (
-            <ExpensesFormComponent addExpenseGroup = {this.addExpenseGroup} data = {this.state}></ExpensesFormComponent>
-        )
-    }
+  addExpenseGroup() {
+    this.setState(prevState => {
+      let expensesGroups = prevState.expensesGroups;
+      expensesGroups.push({
+        key: prevState.expensesGroups.length,
+        name: "",
+        expenseGroupId: prevState.expensesGroups.length,
+        addExpense: this.addExpense,
+        handleExpenseGroupNameChanged: this.handleExpenseGroupNameChanged
+      });
+      this.props.onExpenseGroupAdded(expensesGroups);
+      return expensesGroups;
+    });
+  }
 
-    addExpenseGroup() {
-        this.setState(prevState => {
-          let expensesGroups = prevState.expensesGroups;
-          expensesGroups.push(
-            <div>
-              <ExpenseGroup key={this.state.expensesGroups.length}>
-                New group
-              </ExpenseGroup>
-            </div>
-          );
-          this.props.onExpenseGroupAdded(expensesGroups);
-          return expensesGroups;
-        });
-      };
+  addExpense = newExpenseGroup => {
+    console.log("Siemanko");
+  };
+
+  handleExpenseGroupNameChanged = (index, newName) => {
+    let expenseGroups = this.state.expensesGroups;
+    expenseGroups[index].name = newName;
+
+    this.setState({
+      expensesGroups: expenseGroups
+    });
+  };
 }
 
 export default ExpensesForm;
