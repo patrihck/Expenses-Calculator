@@ -30,6 +30,7 @@ class ExpenseGroup extends React.Component {
         ></input>
         <ExpensesList
           expensesList={this.props.expensesList}
+          expenseGroupId={this.props.expenseGroupId}
           addExpense={this.props.addExpense}
           className="expense-group-grid-container"
         ></ExpensesList>

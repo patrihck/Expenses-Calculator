@@ -29,15 +29,23 @@ class ExpensesForm extends React.Component {
         name: "",
         expenseGroupId: prevState.expensesGroups.length,
         addExpense: this.addExpense,
-        handleExpenseGroupNameChanged: this.handleExpenseGroupNameChanged
+        handleExpenseGroupNameChanged: this.handleExpenseGroupNameChanged,
+        expensesList: []
       });
       this.props.onExpenseGroupAdded(expensesGroups);
       return expensesGroups;
     });
   }
 
-  addExpense = newExpenseGroup => {
-    console.log("Siemanko");
+  addExpense = (expenseGroupId, newExpense) => {
+    this.setState(() => {
+      let expenseGroups = this.state.expensesGroups;
+      expenseGroups[expenseGroupId].expensesList = newExpense;
+
+      return {
+        expensesGroups: expenseGroups
+      };
+    });
   };
 
   handleExpenseGroupNameChanged = (index, newName) => {

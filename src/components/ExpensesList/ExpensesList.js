@@ -84,7 +84,7 @@ class ExpensesList extends React.Component {
         expensesList: newExpensesList
       };
 
-      this.props.addExpense(newExpensesList);
+      this.props.addExpense(this.props.expenseGroupId, newExpensesList);
       return newState;
     });
   };
